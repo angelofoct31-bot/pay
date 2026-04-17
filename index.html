@@ -184,18 +184,31 @@ function payNow() {
     name: "Vemanas",
 
     handler: function (response) {
-      var paymentId = response.razorpay_payment_id;
 
-      window.location.href =
-        "https://docs.google.com/forms/d/e/1FAIpQLSeQbpIy6h79lzMqh_ajM-Ls_q52oDfsiU5v5oqki2duN7yB_A/viewform?usp=pp_url&entry.2042824882=" + paymentId;
-    }
-  };
+  console.log("Payment Success:", response);
 
-  var rzp = new Razorpay(options);
-  rzp.open();
+  var paymentId = response.razorpay_payment_id;
+
+  if (paymentId) {
+    setTimeout(function () {
+      window.location.href ="https://docs.google.com/forms/d/e/1FAIpQLSeQbpIy6h79lzMqh_ajMs_q52oDfsiU5v5oqki2duN7yB_A/viewformusp=pp_url&entry.2042824882="+ paymentId;
+    }, 300);
+  } else {
+    alert("Payment captured but no ID received.");
+  }
 }
 </script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
 
